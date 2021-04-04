@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.1.2](https://github.com/p6m7g8/p6git/compare/v2.1.1...v2.1.2) (2021-04-04)
+
+
+### Features
+
+* **api:** master -> default ([#37](https://github.com/p6m7g8/p6git/issues/37)) ([8c64c6d](https://github.com/p6m7g8/p6git/commit/8c64c6df8dfb81b0f1375c7bdd55f4e82cd68048))
+
+
+* **README:** updates generator ([#38](https://github.com/p6m7g8/p6git/issues/38)) ([8a39090](https://github.com/p6m7g8/p6git/commit/8a390900005256b7241156454786ca71a80b69ee))
+* Coc -> .github ([10c105d](https://github.com/p6m7g8/p6git/commit/10c105d8e395b51e8f3eb22f75cbf77e5b5435ac))
+
 ### [2.1.1](https://github.com/p6m7g8/p6git/compare/v2.1.0...v2.1.1) (2020-12-23)
 
 
