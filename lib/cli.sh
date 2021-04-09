@@ -237,11 +237,7 @@ p6_git_p6_log() {
     fi
 
     git log \
-        --graph \
-        --abbrev-commit \
-        --date=relative \
-        --decorate \
-        --pretty="format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" \
+	--pretty="format:%Cred%h%Creset %Cgreen(%cD) %C(bold blue)<%al>%Creset %C(yellow)%d%Creset %s" \
         "$count" \
         "$@"
 }
