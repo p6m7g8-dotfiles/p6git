@@ -259,7 +259,7 @@ p6_git_p6_symbolic_ref() {
     local ref="$1"
 
     local symbol
-    symbol=$(p6_git_cmd symbolic-ref "$ref" 2>/dev/null)
+    symbol=$(git symbolic-ref "$ref" 2>/dev/null)
 
     symbol=$(p6_echo "$symbol" | sed -e 's,.*/,,')
 
