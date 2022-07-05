@@ -228,6 +228,8 @@ p6_git_p6_log() {
         count=-10
     elif p6_string_eq "main" "$branch"; then
         count=-10
+    elif p6_string_eq "development" "$branch"; then
+        count=-10
     elif p6_string_eq "DETACHED" "$branch"; then
         count=-10
     elif p6_string_blank "$branch"; then
