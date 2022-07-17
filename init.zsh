@@ -14,7 +14,11 @@ p6df::modules::p6git::deps() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::p6git::init()
+# Function: p6df::modules::p6git::init(_module, dir)
+#
+#  Args:
+#	_module -
+#	dir -
 #
 #>
 ######################################################################

@@ -6,6 +6,7 @@
 #  Returns:
 #	str - branch
 #
+#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_branch_get() {
@@ -25,6 +26,7 @@ p6_git_branch_get() {
 #  Returns:
 #	str - branch
 #
+#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_branch_base_get() {
@@ -79,6 +81,7 @@ p6_git_org_org_get() {
 #  Returns:
 #	str - sha
 #
+#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_sha_short_get() {
