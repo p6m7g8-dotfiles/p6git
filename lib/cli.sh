@@ -567,7 +567,7 @@ p6_git_p6_fetch() {
 p6_git_p6_clone() {
     shift 0
 
-    p6_git_cmd clone --resurse-submodules "$@"
+    p6_git_cmd clone "$@"
 }
 
 ######################################################################
