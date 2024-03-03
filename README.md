@@ -111,7 +111,7 @@
 ├── cli.sh
 └── util.sh
 
-0 directories, 2 files
+1 directory, 2 files
 ```
 ## Author
 

@@ -24,10 +24,10 @@ p6df::modules::p6git::deps() {
 #>
 ######################################################################
 p6df::modules::p6git::init() {
-    local _module="$1"
-    local dir="$2"
+  local _module="$1"
+  local dir="$2"
 
-    p6_bootstrap "$dir"
+  p6_bootstrap "$dir"
 
-    p6_return_void
+  p6_return_void
 }
