@@ -48,70 +48,148 @@
 - p6df::modules::p6git::init(_module, dir)
 
 
+### cli:
+
+#### cli/add.sh:
+
+- p6_git_cli_add()
+- p6_git_cli_add_all()
+
+#### cli/branch.sh:
+
+- p6_git_cli_branch_create(...)
+- p6_git_cli_branch_verbose_verbose()
+
+#### cli/checkout.sh:
+
+- p6_git_cli_checkout()
+- p6_git_cli_checkout_default()
+
+#### cli/clean.sh:
+
+- p6_git_cli_clean_fdx()
+
+#### cli/clone.sh:
+
+- p6_git_cli_clone()
+
+#### cli/commit.sh:
+
+- p6_git_cli_commit_last_edit(...)
+- p6_git_cli_commit_verbose_with_message()
+
+#### cli/diff.sh:
+
+- p6_git_cli_diff()
+- p6_git_cli_diff_head(...)
+- p6_git_cli_diff_previous(...)
+
+#### cli/fetch.sh:
+
+- p6_git_cli_fetch_all(...)
+
+#### cli/grep.sh:
+
+- p6_git_cli_grep(...)
+- p6_git_cli_grep_files()
+
+#### cli/merge.sh:
+
+- p6_git_cli_merge()
+
+#### cli/pull.sh:
+
+- p6_git_cli_pull_rebase_autostash_ff_only()
+
+#### cli/push.sh:
+
+- p6_git_cli_push_f()
+- p6_git_cli_push_tags(...)
+- p6_git_cli_push_u()
+
+#### cli/rebase.sh:
+
+- p6_git_cli_rebase()
+- p6_git_cli_rebase_abort()
+- p6_git_cli_rebase_continue()
+
+#### cli/remote.sh:
+
+- p6_git_cli_remote_verbose()
+
+#### cli/reset.sh:
+
+- p6_git_cli_git_reset_head_hard()
+- p6_git_cli_reset_head_ago_one(...)
+
+#### cli/restore.sh:
+
+- p6_git_cli_restore_stagged()
+
+#### cli/revert.sh:
+
+- p6_git_cli_revert()
+
+#### cli/stash.sh:
+
+- p6_git_cli_stash_list()
+
+#### cli/status.sh:
+
+- p6_git_cli_status_s(...)
+
+
 ### p6git/lib:
 
-#### p6git/lib/cli.sh:
+#### p6git/lib/branch.sh:
 
-- code rc = p6_git_cmd(cmd, ...)
-- p6_git_p6_add(...)
-- p6_git_p6_add_all()
-- p6_git_p6_branch(...)
-- p6_git_p6_branch_create(...)
-- p6_git_p6_checkout(...)
-- p6_git_p6_checkout_default()
-- p6_git_p6_clean(...)
-- p6_git_p6_clone(...)
-- p6_git_p6_commit(msg)
-- p6_git_p6_commit_last_edit(...)
-- p6_git_p6_diff(...)
-- p6_git_p6_diff_default(...)
-- p6_git_p6_diff_head(...)
-- p6_git_p6_diff_previous(...)
-- p6_git_p6_fetch(...)
-- p6_git_p6_git_reset_head_hard()
-- p6_git_p6_grep(...)
-- p6_git_p6_grep_files(...)
-- p6_git_p6_log(...)
-- p6_git_p6_merge(...)
-- p6_git_p6_pull()
-- p6_git_p6_push(...)
-- p6_git_p6_push_f()
-- p6_git_p6_push_tags(...)
-- p6_git_p6_rebase(...)
-- p6_git_p6_rebase_abort()
-- p6_git_p6_rebase_continue()
-- p6_git_p6_remote()
-- p6_git_p6_reset(...)
-- p6_git_p6_reset_head_ago_one(...)
-- p6_git_p6_reset_head_hard(...)
-- p6_git_p6_restore(...)
-- p6_git_p6_revert(...)
-- p6_git_p6_stash_list()
-- p6_git_p6_status(...)
-- p6_git_p6_sync()
-- p6_git_p6_update()
-- str symbol = p6_git_p6_symbolic_ref(ref)
+- str branch = p6_git_branch_base_get()
+- str branch = p6_git_branch_get()
 
 #### p6git/lib/util.sh:
 
-- code rc = p6_git_dirty_get()
-- code rc = p6_git_inside_tree()
-- p6_git_clobber()
-- str branch = p6_git_branch_base_get()
-- str branch = p6_git_branch_get()
-- str org = p6_git_org_org_get()
-- str repo = p6_git_org_repo_get()
-- str sha = p6_git_sha_short_get()
+- code rc = p6_git_util_dirty_get()
+- code rc = p6_git_util_inside_tree()
+- p6_git_util_checkout_default()
+- p6_git_util_clobber()
+- p6_git_util_diff_default(...)
+- p6_git_util_log(...)
+- p6_git_util_sync()
+- p6_git_util_update()
+- str org = p6_git_util_org_from_origin()
+- str repo = p6_git_util_repo_from_origin()
+- str sha = p6_git_util_sha_short_get()
+- str symbol = p6_git_util_symbolic_ref(ref)
 
 
 
 ## Hier
 ```text
 .
-├── cli.sh
+├── branch.sh
+├── cli
+│   ├── add.sh
+│   ├── branch.sh
+│   ├── checkout.sh
+│   ├── clean.sh
+│   ├── clone.sh
+│   ├── commit.sh
+│   ├── diff.sh
+│   ├── fetch.sh
+│   ├── grep.sh
+│   ├── merge.sh
+│   ├── pull.sh
+│   ├── push.sh
+│   ├── rebase.sh
+│   ├── remote.sh
+│   ├── reset.sh
+│   ├── restore.sh
+│   ├── revert.sh
+│   ├── stash.sh
+│   └── status.sh
 └── util.sh
 
-1 directory, 2 files
+2 directories, 21 files
 ```
 ## Author
 
