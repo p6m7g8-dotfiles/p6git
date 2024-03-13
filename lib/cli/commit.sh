@@ -26,5 +26,7 @@ p6_git_cli_commit_verbose_with_message() {
 p6_git_cli_commit_last_edit() {
     shift 0
 
-    p6_git_cli_commit --amend "$@"
+    git commit --verbose --amend "$@"
 }
+
+

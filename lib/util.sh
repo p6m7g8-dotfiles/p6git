@@ -104,9 +104,9 @@ p6_git_util_clobber() {
 
   p6_git_cli_checkout "scratch"
   p6_git_cli_checkout "$branch"
-  p6_git_cli_fetch
+  p6_git_cli_fetch_all
   p6_git_cli_reset "--hard" "origin/$branch"
-  p6_git_cli_clean
+  p6_git_cli_clean_fdx
 
   p6_return_void
 }
@@ -120,8 +120,8 @@ p6_git_util_clobber() {
 ######################################################################
 p6_git_util_sync() {
 
-    p6_git_cli_pull &&
-        p6_git_cli_push
+    p6_git_cli_pull_rebase_autostash_ff_only &&
+        p6_git_cli_push_tags
 }
 
 ######################################################################
@@ -136,9 +136,9 @@ p6_git_util_update() {
     local base
     base=$(p6_git_branch_base_get)
 
-    p6_git_cli_fetch
+    p6_git_cli_fetch_all
     p6_git_cli_merge "upstream/$base" "origin/$base"
-    p6_git_cli_sync
+    p6_git_util_sync
 }
 
 ######################################################################

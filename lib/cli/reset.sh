@@ -3,13 +3,13 @@
 ######################################################################
 #<
 #
-# Function: p6_git_cli_git_reset_head_hard()
+# Function: p6_git_cli_reset_head_hard()
 #
 #>
 ######################################################################
-p6_git_cli_git_reset_head_hard() {
+p6_git_cli_reset_head_hard() {
 
-    p6_git_cli_reset --head --hard
+    git reset --head --hard "$@"
 }
 
 ######################################################################

@@ -119,8 +119,8 @@
 
 #### cli/reset.sh:
 
-- p6_git_cli_git_reset_head_hard()
 - p6_git_cli_reset_head_ago_one(...)
+- p6_git_cli_reset_head_hard()
 
 #### cli/restore.sh:
 
@@ -144,7 +144,10 @@
 #### p6git/lib/branch.sh:
 
 - str branch = p6_git_branch_base_get()
+- str branch = p6_git_branch_flast_get()
 - str branch = p6_git_branch_get()
+- str branch = p6_git_branch_process(branch_tmpl, user, pr_num, msg)
+- str branch_tmpl = p6_git_branch_p6_get()
 
 #### p6git/lib/util.sh:
 
