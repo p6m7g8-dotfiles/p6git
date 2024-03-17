@@ -57,6 +57,7 @@
 
 #### cli/branch.sh:
 
+- p6_git_cli_branch_Delete(...)
 - p6_git_cli_branch_create(...)
 - p6_git_cli_branch_verbose_verbose()
 
@@ -76,7 +77,8 @@
 #### cli/commit.sh:
 
 - p6_git_cli_commit_last_edit(...)
-- p6_git_cli_commit_verbose_with_message()
+- p6_git_cli_commit_verbose(...)
+- p6_git_cli_commit_with_message()
 
 #### cli/diff.sh:
 
@@ -119,8 +121,8 @@
 
 #### cli/reset.sh:
 
+- p6_git_cli_reset_hard_head()
 - p6_git_cli_reset_head_ago_one(...)
-- p6_git_cli_reset_head_hard()
 
 #### cli/restore.sh:
 
@@ -159,6 +161,7 @@
 - p6_git_util_log(...)
 - p6_git_util_sync()
 - p6_git_util_update()
+- path scratch_file = p6_git_util_msg_collect(editor, msg)
 - str org = p6_git_util_org_from_origin()
 - str repo = p6_git_util_repo_from_origin()
 - str sha = p6_git_util_sha_short_get()

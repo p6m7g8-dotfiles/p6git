@@ -37,7 +37,6 @@ p6_git_branch_base_get() {
   p6_return_str "$branch"
 }
 
-
 ######################################################################
 #<
 #
@@ -97,11 +96,6 @@ p6_git_branch_process() {
   local pr_num="$3"
   local msg="$4"
 
-  local suffix
-  suffix=$(p6_token_random "5")
-
-  local prefix="p6df-"
-
   local kind
   kind=$(p6_echo "$msg" | cut -d : -f 1 | sed -e 's,(,/,g' -e 's,),/,g' -e 's,/$,,' -e 's,\/\!,!,')
 
@@ -111,12 +105,10 @@ p6_git_branch_process() {
 
   local branch=$branch_tmpl
 
-  branch=$(p6_echo "$branch" | p6_string_replace "USER" "$user")
-  branch=$(p6_echo "$branch" | p6_string_replace "PRN" "$pr_num")
-  branch=$(p6_echo "$branch" | p6_string_replace "REST" "$rest")
-  branch=$(p6_echo "$branch" | p6_string_replace "KIND" "$kind")
-  branch=$(p6_echo "$branch" | p6_string_replace "PREFIX" "$prefix")
-  branch=$(p6_echo "$branch" | p6_string_replace "SUFFIX" "$suffix") 
+  branch=$(p6_string_replace "$branch" "USER" "$user")
+  branch=$(p6_string_replace "$branch" "PRN"  "$prn")
+  branch=$(p6_string_replace "$branch" "REST" "$rest")
+  branch=$(p6_string_replace "$branch" "KIND" "$kind")
 
   p6_return_str "$branch"
 }

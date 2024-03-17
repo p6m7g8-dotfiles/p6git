@@ -8,6 +8,7 @@
 #>
 ######################################################################
 p6_git_cli_remote_verbose() {
+    shift 0
 
-    git remote --verbose
+    git remote --verbose "$@"
 }

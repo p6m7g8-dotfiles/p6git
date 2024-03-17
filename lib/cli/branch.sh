@@ -28,3 +28,19 @@ p6_git_cli_branch_create() {
 
     p6_git_cli_checkout -b "$@"
 }
+
+######################################################################
+#<
+#
+# Function: p6_git_cli_branch_Delete(...)
+#
+#  Args:
+#	... - 
+#
+#>
+######################################################################
+p6_git_cli_branch_Delete() {
+    shift 0
+
+    p6_git_branch_verbose_verbose -D "$@"
+}

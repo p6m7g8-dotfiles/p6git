@@ -240,3 +240,39 @@ p6_git_util_symbolic_ref() {
 
     p6_return_str "$symbol"
 }
+
+######################################################################
+#<
+#
+# Function: path scratch_file = p6_git_util_msg_collect(editor, msg)
+#
+#  Args:
+#	editor -
+#	msg -
+#
+#  Returns:
+#	path - scratch_file
+#
+#>
+######################################################################
+p6_git_util_msg_collect() {
+    local editor="$1"
+    local msg="$2"
+
+    # p6_transient
+    local scratch_file=$(p6_edit_scratch_file_create "$msg")
+    local marker="# p6_git_util_msg_collect(): lines below this marker will be ignored"
+
+    # populate file
+    p6_echo "" >> $scratch_file
+    p6_echo "$marker" >> $scratch_file
+    p6_git_cli_status_s >> $scratch_file
+    p6_git_cli_diff >> $scratch_file
+
+    p6_edit_editor_run "$editor" "$scratch_file"
+
+    # sanitize file
+    p6_file_marker_delete_to_end "$scratch_file" "$marker"
+
+    p6_return_path "$scratch_file"
+}
