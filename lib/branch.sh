@@ -26,13 +26,18 @@ p6_git_branch_get() {
 #  Returns:
 #	str - branch
 #
-#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_branch_base_get() {
 
+  local branches="next development main master"
+
   local branch
-  branch=$(p6_git_util_symbolic_ref "refs/remotes/origin/HEAD")
+  for branch in $(echo "$branches")s; do
+    if git show-ref "refs/heads/$branch" >/dev/null 2>&1; then
+      break 
+    fi
+  done
 
   p6_return_str "$branch"
 }
@@ -76,25 +81,25 @@ p6_git_branch_flast_get() {
 ######################################################################
 #<
 #
-# Function: str branch = p6_git_branch_process(branch_tmpl, user, pr_num, msg)
+# Function: str branch = p6_git_branch_process(branch_tmpl, user, msg, pr_num)
 #
 #  Args:
 #	branch_tmpl -
 #	user -
-#	pr_num -
 #	msg -
+#	pr_num -
 #
 #  Returns:
 #	str - branch
 #
-#  Environment:	 KIND PREFIX PRN REST SUFFIX USER
+#  Environment:	 KIND PRN REST USER
 #>
 ######################################################################
 p6_git_branch_process() {
   local branch_tmpl="$1"
   local user="$2"
-  local pr_num="$3"
-  local msg="$4"
+  local msg="$3"
+  local pr_num="$4"
 
   local kind
   kind=$(p6_echo "$msg" | cut -d : -f 1 | sed -e 's,(,/,g' -e 's,),/,g' -e 's,/$,,' -e 's,\/\!,!,')
@@ -106,9 +111,10 @@ p6_git_branch_process() {
   local branch=$branch_tmpl
 
   branch=$(p6_string_replace "$branch" "USER" "$user")
-  branch=$(p6_string_replace "$branch" "PRN"  "$prn")
+  branch=$(p6_string_replace "$branch" "PRN" "$prn")
   branch=$(p6_string_replace "$branch" "REST" "$rest")
   branch=$(p6_string_replace "$branch" "KIND" "$kind")
+  branch=$(p6_string_replace "$branch" "//" "/")
 
   p6_return_str "$branch"
 }

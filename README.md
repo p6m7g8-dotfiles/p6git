@@ -148,7 +148,7 @@
 - str branch = p6_git_branch_base_get()
 - str branch = p6_git_branch_flast_get()
 - str branch = p6_git_branch_get()
-- str branch = p6_git_branch_process(branch_tmpl, user, pr_num, msg)
+- str branch = p6_git_branch_process(branch_tmpl, user, msg, pr_num)
 - str branch_tmpl = p6_git_branch_p6_get()
 
 #### p6git/lib/util.sh:

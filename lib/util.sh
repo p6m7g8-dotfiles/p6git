@@ -183,38 +183,29 @@ p6_git_util_diff_default() {
 #  Args:
 #	... - 
 #
-#  Environment:	 DETACHED
 #>
 ######################################################################
 p6_git_util_log() {
     shift 0
 
     local branch
-    branch=$(p6_git_branch_get)
     local base
+    local format="format:%Cred%h%Creset %Cgreen(%cD) %C(bold blue)<%al>%Creset %C(yellow)%d%Creset %s"
+    branch=$(p6_git_branch_get)
     base=$(p6_git_branch_base_get)
 
-    local count
-    if p6_string_eq "master" "$branch"; then
-        count=-10
-    elif p6_string_eq "main" "$branch"; then
-        count=-10
-    elif p6_string_eq "development" "$branch"; then
-        count=-10
-    elif p6_string_eq "next" "$branch"; then
-        count=-10
-    elif p6_string_eq "DETACHED" "$branch"; then
-        count=-10
-    elif p6_string_blank "$branch"; then
-        count=-10
-    else
-        count="${base}..${branch}"
-    fi
+    case $branch in
+    next|development|main|master) 
+      local count="-10"
+      git log --pretty="$format" "$count" "$@"
+      ;;
+    *)
+      local range="${base}..${branch}"
+      git log --pretty="$format" "$range" "$@"
+      ;;
+   esac
 
-    git log \
-        --pretty="format:%Cred%h%Creset %Cgreen(%cD) %C(bold blue)<%al>%Creset %C(yellow)%d%Creset %s" \
-        "$count" \
-        "$@"
+   p6_return_void 
 }
 
 ######################################################################
@@ -260,7 +251,7 @@ p6_git_util_msg_collect() {
     local msg="$2"
 
     # p6_transient
-    local scratch_file=$(p6_edit_scratch_file_create "$msg")
+    scratch_file=$(p6_edit_scratch_file_create "$msg")
     local marker="# p6_git_util_msg_collect(): lines below this marker will be ignored"
 
     # populate file
