@@ -42,5 +42,5 @@ p6_git_cli_branch_create() {
 p6_git_cli_branch_Delete() {
     shift 0
 
-    p6_git_branch_verbose_verbose -D "$@"
+    p6_git_cli_branch_verbose_verbose -D "$@"
 }
