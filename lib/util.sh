@@ -191,7 +191,7 @@ p6_git_util_log() {
 
     local branch
     local base
-    local format="format:%Cred%h%Creset %Cgreen(%cD) %C(bold blue)<%al>%Creset %C(yellow)%d%Creset %s"
+    local format="format:%Cred%h%Creset %Cgreen(%ci) %C(bold blue)<%al>%Creset %C(yellow)%d%Creset %s"
     branch=$(p6_git_branch_get)
     base=$(p6_git_branch_base_get)
 
