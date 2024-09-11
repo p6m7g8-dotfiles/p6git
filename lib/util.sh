@@ -268,3 +268,35 @@ p6_git_util_msg_collect() {
 
     p6_return_path "$scratch_file"
 }
+
+######################################################################
+#<
+#
+# Function: p6_git_util_shas_for_string(file, search_string)
+#
+#  Args:
+#	file -
+#	search_string -
+#
+#>
+######################################################################
+p6_git_util_shas_for_string() {
+  local file="$1"
+  local search_string="$2"
+
+  local previous_sha=""
+  local current_sha
+  p6_git_cli_log_shas "$file" | while read -r current_sha; do
+    if p6_string_blank "$previous_sha"; then
+      local diff_output=$(git diff "$current_sha" "$previous_sha" -- "$file")
+
+      if p6_echo "$diff_output" | grep -q "$search_string"; then
+        p6_msg "Found '$search_string' in the diff between $current_sha and $previous_sha"
+      fi
+    fi
+
+    previous_sha=$current_sha
+  done
+
+  p6_return_void
+}

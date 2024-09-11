@@ -13,3 +13,19 @@ p6_git_cli_log_since() {
 
     git log --since "$since" --pretty="$fmt"
 }
+
+######################################################################
+#<
+#
+# Function: p6_git_cli_log_shas(file)
+#
+#  Args:
+#	file -
+#
+#>
+######################################################################
+p6_git_cli_log_shas() {
+    local file="$1"
+
+    git log --format="%H" -- "$file"
+}
