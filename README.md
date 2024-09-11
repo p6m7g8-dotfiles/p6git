@@ -73,6 +73,7 @@
 
 ### p6git/lib/cli/log.sh
 
+- p6_git_cli_log_shas(file)
 - p6_git_cli_log_since()
 
 ### p6git/lib/cli/merge.sh
@@ -145,6 +146,7 @@
 - p6_git_util_clobber()
 - p6_git_util_diff_default(...)
 - p6_git_util_log(...)
+- p6_git_util_shas_for_string(file, search_string)
 - p6_git_util_sync()
 - p6_git_util_update()
 - path scratch_file = p6_git_util_msg_collect(editor, msg)
