@@ -33,6 +33,22 @@ p6_git_cli_commit_verbose() {
 ######################################################################
 #<
 #
+# Function: p6_git_cli_commit_squash(...)
+#
+#  Args:
+#	... - 
+#
+#>
+######################################################################
+p6_git_cli_commit_squash() {
+    shift 0
+
+    p6_git_cli_commit_verbose --amend --no-edit
+}
+
+######################################################################
+#<
+#
 # Function: p6_git_cli_commit_last_edit(...)
 #
 #  Args:
@@ -45,5 +61,3 @@ p6_git_cli_commit_last_edit() {
 
     git commit --verbose --amend "$@"
 }
-
-

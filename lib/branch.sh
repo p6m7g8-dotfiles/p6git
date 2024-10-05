@@ -111,7 +111,7 @@ p6_git_branch_process() {
   local branch=$branch_tmpl
 
   branch=$(p6_string_replace "$branch" "USER" "$user")
-  branch=$(p6_string_replace "$branch" "PRN" "$prn")
+  branch=$(p6_string_replace "$branch" "PRN" "$pr_num")
   branch=$(p6_string_replace "$branch" "REST" "$rest")
   branch=$(p6_string_replace "$branch" "KIND" "$kind")
   branch=$(p6_string_replace "$branch" "//" "/")
