@@ -53,6 +53,7 @@
 ### p6git/lib/cli/commit.sh
 
 - p6_git_cli_commit_last_edit(...)
+- p6_git_cli_commit_squash(...)
 - p6_git_cli_commit_verbose(...)
 - p6_git_cli_commit_with_message()
 
@@ -104,6 +105,7 @@
 
 - p6_git_cli_reset_hard_head()
 - p6_git_cli_reset_head_ago_one(...)
+- p6_git_cli_reset_soft_head(n)
 
 ### p6git/lib/cli/restore.sh
 
@@ -144,6 +146,7 @@
 - code rc = p6_git_util_inside_tree()
 - p6_git_util_checkout_default()
 - p6_git_util_clobber()
+- p6_git_util_commit_push_squashed_fix()
 - p6_git_util_diff_default(...)
 - p6_git_util_log(...)
 - p6_git_util_shas_for_string(file, search_string)

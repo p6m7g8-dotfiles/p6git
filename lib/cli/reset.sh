@@ -30,3 +30,21 @@ p6_git_cli_reset_head_ago_one() {
 
     git reset HEAD^ "$@"
 }
+
+######################################################################
+#<
+#
+# Function: p6_git_cli_reset_soft_head(n)
+#
+#  Args:
+#	n -
+#
+#  Environment:	 HEAD
+#>
+######################################################################
+p6_git_cli_reset_soft_head() {
+    local n="$1"
+
+    git_reset --soft HEAD~"$n"
+}
+
