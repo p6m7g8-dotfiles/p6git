@@ -316,7 +316,7 @@ p6_git_util_commit_push_squashed_fix() {
     p6_git_cli_commit_with_message "squash me"
     p6_git_cli_reset_soft_head "2"
     p6_git_cli_commit_squash
-    p6_git_cli_git_push_fu
+    p6_git_cli_push_fu
 
     p6_return_void
 }
