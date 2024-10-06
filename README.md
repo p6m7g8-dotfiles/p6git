@@ -87,7 +87,7 @@
 
 ### p6git/lib/cli/push.sh
 
-- p6_git_cli_push_f()
+- p6_git_cli_push_fu()
 - p6_git_cli_push_tags(...)
 - p6_git_cli_push_u()
 
