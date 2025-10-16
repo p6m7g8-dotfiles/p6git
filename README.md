@@ -162,32 +162,32 @@
 
 ```text
 .
-├── README.md
 ├── init.zsh
-└── lib
-    ├── branch.sh
-    ├── cli
-    │   ├── add.sh
-    │   ├── branch.sh
-    │   ├── checkout.sh
-    │   ├── clean.sh
-    │   ├── clone.sh
-    │   ├── commit.sh
-    │   ├── diff.sh
-    │   ├── fetch.sh
-    │   ├── grep.sh
-    │   ├── log.sh
-    │   ├── merge.sh
-    │   ├── pull.sh
-    │   ├── push.sh
-    │   ├── rebase.sh
-    │   ├── remote.sh
-    │   ├── reset.sh
-    │   ├── restore.sh
-    │   ├── revert.sh
-    │   ├── stash.sh
-    │   └── status.sh
-    └── util.sh
+├── lib
+│   ├── branch.sh
+│   ├── cli
+│   │   ├── add.sh
+│   │   ├── branch.sh
+│   │   ├── checkout.sh
+│   │   ├── clean.sh
+│   │   ├── clone.sh
+│   │   ├── commit.sh
+│   │   ├── diff.sh
+│   │   ├── fetch.sh
+│   │   ├── grep.sh
+│   │   ├── log.sh
+│   │   ├── merge.sh
+│   │   ├── pull.sh
+│   │   ├── push.sh
+│   │   ├── rebase.sh
+│   │   ├── remote.sh
+│   │   ├── reset.sh
+│   │   ├── restore.sh
+│   │   ├── revert.sh
+│   │   ├── stash.sh
+│   │   └── status.sh
+│   └── util.sh
+└── README.md
 
 3 directories, 24 files
 ```
