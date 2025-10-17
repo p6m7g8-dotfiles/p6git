@@ -45,6 +45,6 @@ p6_git_cli_reset_head_ago_one() {
 p6_git_cli_reset_soft_head() {
     local n="$1"
 
-    git_reset --soft HEAD~"$n"
+    git reset --soft HEAD~"$n"
 }
 
