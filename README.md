@@ -146,6 +146,7 @@
 - code rc = p6_git_util_inside_tree()
 - p6_git_util_checkout_default()
 - p6_git_util_clobber()
+- p6_git_util_commit_push_fix()
 - p6_git_util_commit_push_squashed_fix()
 - p6_git_util_diff_default(...)
 - p6_git_util_log(...)

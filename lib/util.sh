@@ -320,3 +320,21 @@ p6_git_util_commit_push_squashed_fix() {
 
     p6_return_void
 }
+
+######################################################################
+#<
+#
+# Function: p6_git_util_commit_push_fix()
+#
+#>
+######################################################################
+p6_git_util_commit_push_fix() {
+
+    p6_git_cli_status_s
+    p6_git_cli_diff
+    p6_git_cli_add_all
+    p6_git_cli_commit_with_message "fix"
+    p6_git_cli_push_u
+
+    p6_return_void
+}
