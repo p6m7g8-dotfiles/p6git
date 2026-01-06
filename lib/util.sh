@@ -256,10 +256,10 @@ p6_git_util_msg_collect() {
     local marker="# p6_git_util_msg_collect(): lines below this marker will be ignored"
 
     # populate file
-    p6_echo "" >> $scratch_file
-    p6_echo "$marker" >> $scratch_file
-    p6_git_cli_status_s >> $scratch_file
-    p6_git_cli_diff_head >> $scratch_file
+    p6_echo "" >> "$scratch_file"
+    p6_echo "$marker" >> "$scratch_file"
+    p6_git_cli_status_s >> "$scratch_file"
+    p6_git_cli_diff_head >> "$scratch_file"
 
     p6_edit_editor_run "$editor" "$scratch_file"
 
