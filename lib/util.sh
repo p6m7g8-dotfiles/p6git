@@ -12,6 +12,7 @@
 p6_git_util_repo_from_origin() {
 
     local url=$(git remote get-url origin 2>&1)
+    # shellcheck disable=2299 # zsh
     local repo=${${url##*/}%.git}
 
     p6_return_str "$repo"
@@ -30,6 +31,7 @@ p6_git_util_repo_from_origin() {
 p6_git_util_org_from_origin() {
 
     local url=$(git remote get-url origin 2>&1)
+    # shellcheck disable=2299 # zsh
     local org=${${url%/*}##*/}
 
     p6_return_str "$org"
@@ -256,10 +258,12 @@ p6_git_util_msg_collect() {
     local marker="# p6_git_util_msg_collect(): lines below this marker will be ignored"
 
     # populate file
-    p6_echo "" >> $scratch_file
-    p6_echo "$marker" >> $scratch_file
-    p6_git_cli_status_s >> $scratch_file
-    p6_git_cli_diff_head >> $scratch_file
+    {
+      p6_echo ""
+      p6_echo "$marker"
+      p6_git_cli_status_s
+      p6_git_cli_diff_head
+    } >> "$scratch_file"
 
     p6_edit_editor_run "$editor" "$scratch_file"
 

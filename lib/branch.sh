@@ -1,3 +1,4 @@
+# shellcheck shell=bash
 ######################################################################
 #<
 #
@@ -33,7 +34,8 @@ p6_git_branch_base_get() {
   local branches="next development main master"
 
   local branch
-  for branch in $(echo "$branches")s; do
+  # shellcheck disable=2116 # zsh
+  for branch in $(echo "$branches"); do
     if git show-ref "refs/heads/$branch" >/dev/null 2>&1; then
       break 
     fi
