@@ -7,7 +7,6 @@
 #  Returns:
 #	str - branch
 #
-#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_branch_get() {
@@ -52,7 +51,6 @@ p6_git_branch_base_get() {
 #  Returns:
 #	str - branch_tmpl
 #
-#  Environment:	 USER
 #>
 ######################################################################
 p6_git_branch_p6_get() {
@@ -70,7 +68,6 @@ p6_git_branch_p6_get() {
 #  Returns:
 #	str - branch
 #
-#  Environment:	 USER
 #>
 ######################################################################
 p6_git_branch_flast_get() {
@@ -94,7 +91,6 @@ p6_git_branch_flast_get() {
 #  Returns:
 #	str - branch
 #
-#  Environment:	 KIND PRN REST USER
 #>
 ######################################################################
 p6_git_branch_process() {
