@@ -21,7 +21,6 @@ p6_git_cli_diff() {
 #  Args:
 #	... - 
 #
-#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_cli_diff_previous() {
@@ -38,7 +37,6 @@ p6_git_cli_diff_previous() {
 #  Args:
 #	... - 
 #
-#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_cli_diff_head() {

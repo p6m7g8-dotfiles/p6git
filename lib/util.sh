@@ -45,7 +45,6 @@ p6_git_util_org_from_origin() {
 #  Returns:
 #	str - sha
 #
-#  Environment:	 HEAD
 #>
 ######################################################################
 p6_git_util_sha_short_get() {
