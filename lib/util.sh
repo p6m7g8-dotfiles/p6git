@@ -193,11 +193,11 @@ p6_git_util_log() {
     local branch
     local base
     local format="format:%Cred%h%Creset|%Cgreen%ci|%C(bold blue)%al%Creset|%s|%C(yellow)%d%Creset"
-    branch=$(p6_git_branch_get)
+    branch=$(p6_git_util_symbolic_ref_full "HEAD")
     base=$(p6_git_branch_base_get)
 
     case $branch in
-    next|development|main|master) 
+    next|development|main|master)
       local count="-10"
       git log --pretty="$format" "$count" "$@"
       ;;
@@ -230,6 +230,28 @@ p6_git_util_symbolic_ref() {
     symbol=$(git symbolic-ref "$ref" 2>/dev/null)
 
     symbol=$(p6_echo "$symbol" | sed -e 's,.*/,,')
+
+    p6_return_str "$symbol"
+}
+
+######################################################################
+#<
+#
+# Function: str symbol = p6_git_util_symbolic_ref_full(ref)
+#
+#  Args:
+#	ref -
+#
+#  Returns:
+#	str - symbol (full branch name, e.g. codex/test-codex-tap)
+#
+#>
+######################################################################
+p6_git_util_symbolic_ref_full() {
+    local ref="$1"
+
+    local symbol
+    symbol=$(git symbolic-ref --short "$ref" 2>/dev/null)
 
     p6_return_str "$symbol"
 }
