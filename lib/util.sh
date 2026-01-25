@@ -57,10 +57,7 @@ p6_git_util_sha_short_get() {
 ######################################################################
 #<
 #
-# Function: code rc = p6_git_util_dirty_get()
-#
-#  Returns:
-#	code - rc
+# Function: p6_git_util_dirty_get()
 #
 #>
 ######################################################################
@@ -77,10 +74,7 @@ p6_git_util_dirty_get() {
 ######################################################################
 #<
 #
-# Function: code rc = p6_git_util_inside_tree()
-#
-#  Returns:
-#	code - rc
+# Function: p6_git_util_inside_tree()
 #
 #>
 ######################################################################
@@ -229,7 +223,7 @@ p6_git_util_symbolic_ref() {
     local symbol
     symbol=$(git symbolic-ref "$ref" 2>/dev/null)
 
-    symbol=$(p6_echo "$symbol" | sed -e 's,.*/,,')
+    symbol=$(p6_echo "$symbol" | p6_filter_extract_after "/")
 
     p6_return_str "$symbol"
 }
@@ -243,7 +237,7 @@ p6_git_util_symbolic_ref() {
 #	ref -
 #
 #  Returns:
-#	str - symbol (full branch name, e.g. codex/test-codex-tap)
+#	str - symbol
 #
 #>
 ######################################################################
@@ -315,7 +309,7 @@ p6_git_util_shas_for_string() {
     if p6_string_blank "$previous_sha"; then
       local diff_output=$(git diff "$current_sha" "$previous_sha" -- "$file")
 
-      if p6_echo "$diff_output" | grep -q "$search_string"; then
+      if p6_string_contains "$diff_output" "$search_string"; then
         p6_msg "Found '$search_string' in the diff between $current_sha and $previous_sha"
       fi
     fi
