@@ -41,38 +41,38 @@ TODO: Add a short summary of this module.
 
 ##### p6git/lib/cli/add.sh
 
-- `p6_git_cli_add()`
+- `p6_git_cli_add(...)`
 - `p6_git_cli_add_all()`
 
 ##### p6git/lib/cli/branch.sh
 
 - `p6_git_cli_branch_Delete(...)`
 - `p6_git_cli_branch_create(...)`
-- `p6_git_cli_branch_verbose_verbose()`
+- `p6_git_cli_branch_verbose_verbose(...)`
 
 ##### p6git/lib/cli/checkout.sh
 
-- `p6_git_cli_checkout()`
+- `p6_git_cli_checkout(...)`
 - `p6_git_cli_checkout_default()`
 
 ##### p6git/lib/cli/clean.sh
 
-- `p6_git_cli_clean_fdx()`
+- `p6_git_cli_clean_fdx(...)`
 
 ##### p6git/lib/cli/clone.sh
 
-- `p6_git_cli_clone()`
+- `p6_git_cli_clone(...)`
 
 ##### p6git/lib/cli/commit.sh
 
 - `p6_git_cli_commit_last_edit(...)`
 - `p6_git_cli_commit_squash(...)`
 - `p6_git_cli_commit_verbose(...)`
-- `p6_git_cli_commit_with_message()`
+- `p6_git_cli_commit_with_message(msg, ...)`
 
 ##### p6git/lib/cli/diff.sh
 
-- `p6_git_cli_diff()`
+- `p6_git_cli_diff(...)`
 - `p6_git_cli_diff_head(...)`
 - `p6_git_cli_diff_previous(...)`
 
@@ -83,16 +83,16 @@ TODO: Add a short summary of this module.
 ##### p6git/lib/cli/grep.sh
 
 - `p6_git_cli_grep(...)`
-- `p6_git_cli_grep_files()`
+- `p6_git_cli_grep_files(...)`
 
 ##### p6git/lib/cli/log.sh
 
 - `p6_git_cli_log_shas(file)`
-- `p6_git_cli_log_since()`
+- `p6_git_cli_log_since(since, [fmt=format:%h %ci %al %d %s])`
 
 ##### p6git/lib/cli/merge.sh
 
-- `p6_git_cli_merge()`
+- `p6_git_cli_merge(...)`
 
 ##### p6git/lib/cli/pull.sh
 
@@ -102,31 +102,31 @@ TODO: Add a short summary of this module.
 
 - `p6_git_cli_push_fu()`
 - `p6_git_cli_push_tags(...)`
-- `p6_git_cli_push_u()`
+- `p6_git_cli_push_u(...)`
 
 ##### p6git/lib/cli/rebase.sh
 
-- `p6_git_cli_rebase()`
+- `p6_git_cli_rebase(...)`
 - `p6_git_cli_rebase_abort()`
 - `p6_git_cli_rebase_continue()`
 
 ##### p6git/lib/cli/remote.sh
 
-- `p6_git_cli_remote_verbose()`
+- `p6_git_cli_remote_verbose(...)`
 
 ##### p6git/lib/cli/reset.sh
 
-- `p6_git_cli_reset_hard_head()`
+- `p6_git_cli_reset_hard_head(...)`
 - `p6_git_cli_reset_head_ago_one(...)`
 - `p6_git_cli_reset_soft_head(n)`
 
 ##### p6git/lib/cli/restore.sh
 
-- `p6_git_cli_restore_stagged()`
+- `p6_git_cli_restore_stagged(...)`
 
 ##### p6git/lib/cli/revert.sh
 
-- `p6_git_cli_revert()`
+- `p6_git_cli_revert(...)`
 
 ##### p6git/lib/cli/stash.sh
 
@@ -147,21 +147,22 @@ TODO: Add a short summary of this module.
 
 ##### p6git/lib/branch.sh
 
+- `p6_git_branch_process(branch_tmpl, user, msg, pr_num)`
 - `str branch = p6_git_branch_base_get()`
 - `str branch = p6_git_branch_flast_get()`
 - `str branch = p6_git_branch_get()`
-- `str branch = p6_git_branch_process(branch_tmpl, user, msg, pr_num)`
+- `str branch = p6_git_branch_template_render(branch_tmpl, user, pr_num, rest, kind)`
 - `str branch_tmpl = p6_git_branch_p6_get()`
 
 ##### p6git/lib/util.sh
 
-- `code rc = p6_git_util_dirty_get()`
-- `code rc = p6_git_util_inside_tree()`
 - `p6_git_util_checkout_default()`
 - `p6_git_util_clobber()`
 - `p6_git_util_commit_push_fix()`
 - `p6_git_util_commit_push_squashed_fix()`
 - `p6_git_util_diff_default(...)`
+- `p6_git_util_dirty_get()`
+- `p6_git_util_inside_tree()`
 - `p6_git_util_log(...)`
 - `p6_git_util_shas_for_string(file, search_string)`
 - `p6_git_util_sync()`
@@ -171,6 +172,7 @@ TODO: Add a short summary of this module.
 - `str repo = p6_git_util_repo_from_origin()`
 - `str sha = p6_git_util_sha_short_get()`
 - `str symbol = p6_git_util_symbolic_ref(ref)`
+- `str symbol = p6_git_util_symbolic_ref_full(ref)`
 
 ## Hierarchy
 
@@ -201,9 +203,20 @@ TODO: Add a short summary of this module.
 │   │   ├── stash.sh
 │   │   └── status.sh
 │   └── util.sh
-└── README.md
+├── README.md
+└── t
+    ├── branch.t
+    ├── cli-branch.t
+    ├── cli-core.t
+    ├── cli-network.t
+    ├── cli-remote.t
+    ├── cli-reset.t
+    ├── cli-stash.t
+    ├── init.t
+    ├── util-network.t
+    └── util.t
 
-3 directories, 24 files
+4 directories, 34 files
 ```
 
 ## Author

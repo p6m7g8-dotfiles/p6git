@@ -80,16 +80,48 @@ p6_git_branch_flast_get() {
 ######################################################################
 #<
 #
-# Function: str branch = p6_git_branch_process(branch_tmpl, user, msg, pr_num)
+# Function: str branch = p6_git_branch_template_render(branch_tmpl, user, pr_num, rest, kind)
+#
+#  Args:
+#	branch_tmpl -
+#	user -
+#	pr_num -
+#	rest -
+#	kind -
+#
+#  Returns:
+#	str - branch
+#
+#>
+######################################################################
+p6_git_branch_template_render() {
+  local branch_tmpl="$1"
+  local user="$2"
+  local pr_num="$3"
+  local rest="$4"
+  local kind="$5"
+
+  local branch="$branch_tmpl"
+
+  branch="${branch//USER/$user}"
+  branch="${branch//PRN/$pr_num}"
+  branch="${branch//REST/$rest}"
+  branch="${branch//KIND/$kind}"
+  branch=$(p6_string_collapse_double_slash "$branch")
+
+  p6_return_str "$branch"
+}
+
+######################################################################
+#<
+#
+# Function: p6_git_branch_process(branch_tmpl, user, msg, pr_num)
 #
 #  Args:
 #	branch_tmpl -
 #	user -
 #	msg -
 #	pr_num -
-#
-#  Returns:
-#	str - branch
 #
 #>
 ######################################################################
@@ -100,19 +132,11 @@ p6_git_branch_process() {
   local pr_num="$4"
 
   local kind
-  kind=$(p6_echo "$msg" | cut -d : -f 1 | sed -e 's,(,/,g' -e 's,),/,g' -e 's,/$,,' -e 's,\/\!,!,')
+  kind=$(p6_echo "$msg" | p6_filter_column_pluck 1 ":" | p6_filter_translate_parens_to_slash | p6_filter_strip_trailing_slash | p6_filter_translate_trailing_slash_bang_to_bang)
 
   local rest
-  rest=$(p6_echo "$msg" | cut -d : -f 2- | sed -e 's,^ *,,' -e 's, ,_,g')
-  rest=$(p6_string_replace "$rest" "[^A-Za-z0-9_#]" "")
+  rest=$(p6_echo "$msg" | p6_filter_column_pluck 2- ":" | p6_filter_strip_leading_spaces | p6_filter_translate_space_to_underscore)
+  rest=$(p6_string_strip_non_branch_chars "$rest")
 
-  local branch=$branch_tmpl
-
-  branch=$(p6_string_replace "$branch" "USER" "$user")
-  branch=$(p6_string_replace "$branch" "PRN" "$pr_num")
-  branch=$(p6_string_replace "$branch" "REST" "$rest")
-  branch=$(p6_string_replace "$branch" "KIND" "$kind")
-  branch=$(p6_string_replace "$branch" "//" "/")
-
-  p6_return_str "$branch"
+  p6_git_branch_template_render "$branch_tmpl" "$user" "$pr_num" "$rest" "$kind"
 }

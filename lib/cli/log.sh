@@ -3,7 +3,11 @@
 ######################################################################
 #<
 #
-# Function: p6_git_cli_log_since()
+# Function: p6_git_cli_log_since(since, [fmt=format:%h %ci %al %d %s])
+#
+#  Args:
+#	since -
+#	OPTIONAL fmt - [format:%h %ci %al %d %s]
 #
 #>
 ######################################################################
