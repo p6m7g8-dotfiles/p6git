@@ -13,7 +13,7 @@
 p6_git_cli_checkout() {
     shift 0
 
-    git checkout "$@"
+    p6_git_cli checkout "$@"
 }
 
 ######################################################################

@@ -11,7 +11,7 @@
 ######################################################################
 p6_git_util_repo_from_origin() {
 
-    local url=$(git remote get-url origin 2>&1)
+    local url=$(p6_git_cli remote get-url origin 2>&1)
     # shellcheck disable=2299 # zsh
     local repo=${${url##*/}%.git}
 
@@ -30,7 +30,7 @@ p6_git_util_repo_from_origin() {
 ######################################################################
 p6_git_util_org_from_origin() {
 
-    local url=$(git remote get-url origin 2>&1)
+    local url=$(p6_git_cli remote get-url origin 2>&1)
     # shellcheck disable=2299 # zsh
     local org=${${url%/*}##*/}
 
@@ -49,7 +49,7 @@ p6_git_util_org_from_origin() {
 ######################################################################
 p6_git_util_sha_short_get() {
 
-    local sha=$(git rev-parse --short HEAD 2>/dev/null)
+    local sha=$(p6_git_cli rev-parse --short HEAD 2>/dev/null)
 
     p6_return_str "$sha"
 }
@@ -63,7 +63,7 @@ p6_git_util_sha_short_get() {
 ######################################################################
 p6_git_util_dirty_get() {
 
-    local gstatus="$(git status 2>/dev/null | tail -1)"
+    local gstatus="$(p6_git_cli status 2>/dev/null | tail -1)"
 
     p6_string_blank "$gstatus"
     local rc=$?
@@ -80,7 +80,7 @@ p6_git_util_dirty_get() {
 ######################################################################
 p6_git_util_inside_tree() {
 
-    git rev-parse --is-inside-git-dir > /dev/null 2>&1
+    p6_git_cli rev-parse --is-inside-git-dir > /dev/null 2>&1
     local rc=$?
 
     p6_return_code_as_code "$rc"
@@ -193,11 +193,11 @@ p6_git_util_log() {
     case $branch in
     next|development|main|master)
       local count="-10"
-      git log --pretty="$format" "$count" "$@"
+      p6_git_cli log --pretty="$format" "$count" "$@"
       ;;
     *)
       local range="${base}..${branch}"
-      git log --pretty="$format" "$range" "$@"
+      p6_git_cli log --pretty="$format" "$range" "$@"
       ;;
    esac
 
@@ -221,7 +221,7 @@ p6_git_util_symbolic_ref() {
     local ref="$1"
 
     local symbol
-    symbol=$(git symbolic-ref "$ref" 2>/dev/null)
+    symbol=$(p6_git_cli symbolic-ref "$ref" 2>/dev/null)
 
     symbol=$(p6_echo "$symbol" | p6_filter_extract_after "/")
 
@@ -245,7 +245,7 @@ p6_git_util_symbolic_ref_full() {
     local ref="$1"
 
     local symbol
-    symbol=$(git symbolic-ref --short "$ref" 2>/dev/null)
+    symbol=$(p6_git_cli symbolic-ref --short "$ref" 2>/dev/null)
 
     p6_return_str "$symbol"
 }
@@ -307,7 +307,7 @@ p6_git_util_shas_for_string() {
   local current_sha
   p6_git_cli_log_shas "$file" | while read -r current_sha; do
     if p6_string_blank "$previous_sha"; then
-      local diff_output=$(git diff "$current_sha" "$previous_sha" -- "$file")
+      local diff_output=$(p6_git_cli diff "$current_sha" "$previous_sha" -- "$file")
 
       if p6_string_contains "$diff_output" "$search_string"; then
         p6_msg "Found '$search_string' in the diff between $current_sha and $previous_sha"

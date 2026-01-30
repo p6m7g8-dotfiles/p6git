@@ -12,5 +12,5 @@
 p6_git_cli_status_s() {
     shift 0
 
-    git status -s "$@"
+    p6_git_cli status -s "$@"
 }

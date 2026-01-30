@@ -13,5 +13,5 @@
 p6_git_cli_clone() {
     shift 0
 
-    git clone "$@"
+    p6_git_cli clone "$@"
 }

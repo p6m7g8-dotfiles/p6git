@@ -1,13 +1,20 @@
-# shellcheck shell=sh
+# shellcheck shell=bash
 
 ######################################################################
 #<
 #
-# Function: p6_git_cli_stash_list()
+# Function: p6_git_cli(...)
+#
+#  Args:
+#	... - 
 #
 #>
 ######################################################################
-p6_git_cli_stash_list() {
+p6_git_cli() {
+    shift 0
 
-    p6_git_cli stash list
+    p6_log "git $*"
+    git "$@"
+
+    p6_return_void
 }

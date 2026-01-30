@@ -13,5 +13,5 @@
 p6_git_cli_revert() {
     shift 0
 
-    git revert "$@"
+    p6_git_cli revert "$@"
 }
