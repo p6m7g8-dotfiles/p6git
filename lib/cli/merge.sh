@@ -13,5 +13,5 @@
 p6_git_cli_merge() {
     shift 0
 
-    git merge "$@"
+    p6_git_cli merge "$@"
 }

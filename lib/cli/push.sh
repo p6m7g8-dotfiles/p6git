@@ -13,7 +13,7 @@
 p6_git_cli_push_u() {
     shift 0
 
-    git push -u "$@"
+    p6_git_cli push -u "$@"
 }
 
 ######################################################################
@@ -40,5 +40,5 @@ p6_git_cli_push_fu() {
 p6_git_cli_push_tags() {
     shift 0
 
-    git push --tags "$@"
+    p6_git_cli push --tags "$@"
 }

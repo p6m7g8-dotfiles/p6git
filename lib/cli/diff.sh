@@ -13,7 +13,7 @@
 p6_git_cli_diff() {
     shift 0
 
-    git diff --no-ext-diff "$@"
+    p6_git_cli diff --no-ext-diff "$@"
 }
 
 ######################################################################

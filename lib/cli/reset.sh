@@ -13,7 +13,7 @@
 p6_git_cli_reset_hard_head() {
     shift 0
 
-    git reset --hard HEAD "$@"
+    p6_git_cli reset --hard HEAD "$@"
 }
 
 ######################################################################
@@ -29,7 +29,7 @@ p6_git_cli_reset_hard_head() {
 p6_git_cli_reset_head_ago_one() {
     shift 0
 
-    git reset HEAD^ "$@"
+    p6_git_cli reset HEAD^ "$@"
 }
 
 ######################################################################
@@ -45,6 +45,6 @@ p6_git_cli_reset_head_ago_one() {
 p6_git_cli_reset_soft_head() {
     local n="$1"
 
-    git reset --soft HEAD~"$n"
+    p6_git_cli reset --soft HEAD~"$n"
 }
 

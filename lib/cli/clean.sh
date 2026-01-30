@@ -13,5 +13,5 @@
 p6_git_cli_clean_fdx() {
     shift 0
 
-    git clean "-fdx" "$@"
+    p6_git_cli clean "-fdx" "$@"
 }

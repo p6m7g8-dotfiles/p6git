@@ -35,7 +35,7 @@ p6_git_branch_base_get() {
   local branch
   # shellcheck disable=2116 # zsh
   for branch in $(echo "$branches"); do
-    if git show-ref "refs/heads/$branch" >/dev/null 2>&1; then
+    if p6_git_cli show-ref "refs/heads/$branch" >/dev/null 2>&1; then
       break 
     fi
   done

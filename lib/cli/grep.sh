@@ -13,7 +13,7 @@
 p6_git_cli_grep_files() {
     shift 0
 
-    git grep --files-with-match "$@"
+    p6_git_cli grep --files-with-match "$@"
 }
 
 ######################################################################
@@ -29,5 +29,5 @@ p6_git_cli_grep_files() {
 p6_git_cli_grep() {
     shift 0
 
-    git grep --word-regexp "$@"
+    p6_git_cli grep --word-regexp "$@"
 }

@@ -12,5 +12,5 @@
 p6_git_cli_init() {
   shift 0
 
-  git init . "$@"
+  p6_git_cli init . "$@"
 }

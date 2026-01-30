@@ -13,7 +13,7 @@
 p6_git_cli_branch_verbose_verbose() {
     shift 0
 
-    git branch --verbose --verbose "$@"
+    p6_git_cli branch --verbose --verbose "$@"
 }
 
 ######################################################################

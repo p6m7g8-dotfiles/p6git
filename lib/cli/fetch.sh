@@ -12,5 +12,5 @@
 p6_git_cli_fetch_all() {
     shift 0
 
-    git fetch --all "$@"
+    p6_git_cli fetch --all "$@"
 }

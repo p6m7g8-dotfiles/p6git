@@ -15,7 +15,7 @@ p6_git_cli_commit_with_message() {
     local msg="$1"
     shift 1
 
-    git commit -m "$msg" "$@"
+    p6_git_cli commit -m "$msg" "$@"
 }
 
 ######################################################################
@@ -31,7 +31,7 @@ p6_git_cli_commit_with_message() {
 p6_git_cli_commit_verbose() {
     shift 0
 
-    git commit --verbose "$@"
+    p6_git_cli commit --verbose "$@"
 }
 
 ######################################################################
@@ -63,5 +63,5 @@ p6_git_cli_commit_squash() {
 p6_git_cli_commit_last_edit() {
     shift 0
 
-    git commit --verbose --amend "$@"
+    p6_git_cli commit --verbose --amend "$@"
 }
