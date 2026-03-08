@@ -2,9 +2,10 @@
 
 main() {
 
-    . ../p6common/lib/_bootstrap.sh
-    p6_bootstrap "../p6common"
+    . ./p6common/lib/_bootstrap.sh
+    p6_bootstrap "./p6common"
 
+    . lib/cli.sh
     . lib/cli/add.sh
     . lib/cli/commit.sh
     . lib/cli/diff.sh
