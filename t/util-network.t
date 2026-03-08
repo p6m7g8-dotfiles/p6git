@@ -2,8 +2,8 @@
 
 main() {
 
-    . ../p6common/lib/_bootstrap.sh
-    p6_bootstrap "../p6common"
+    . ./p6common/lib/_bootstrap.sh
+    p6_bootstrap "./p6common"
 
     funcs="p6_git_util_clobber p6_git_util_sync p6_git_util_update p6_git_util_commit_push_squashed_fix p6_git_util_commit_push_fix"
     set -- $funcs

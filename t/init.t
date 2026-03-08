@@ -1,11 +1,13 @@
 #!/bin/sh
 
 main() {
+    local script="$1"
+    shift
 
-    . ../p6common/lib/_bootstrap.sh
-    p6_bootstrap "../p6common"
+    . ./p6common/lib/_bootstrap.sh
+    p6_bootstrap "./p6common"
 
-    ROOT=$(cd "$(dirname "$0")/.." && pwd)
+    ROOT=$(cd "$(dirname "$script")/.." && pwd)
 
     . "$ROOT/init.zsh"
 
@@ -22,11 +24,11 @@ main() {
     p6_test_start "p6df::modules::p6git::init"
     (
         p6df::modules::p6git::init "p6git" "$ROOT"
-        p6_test_assert_eq "$?" "1" "init returns non-zero"
+        p6_test_assert_eq "$?" "1" "init runs"
     )
     p6_test_finish
 
     p6_test_teardown
 }
 
-main "$@"
+main "$0" "$@"

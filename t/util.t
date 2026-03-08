@@ -1,13 +1,16 @@
 #!/bin/sh
 
 main() {
+    local script="$1"
+    shift
 
-    . ../p6common/lib/_bootstrap.sh
-    p6_bootstrap "../p6common"
+    . ./p6common/lib/_bootstrap.sh
+    p6_bootstrap "./p6common"
 
-    ROOT=$(cd "$(dirname "$0")/.." && pwd)
-    DOTFILES_DIR=$(cd "$ROOT/.." && pwd)
+    ROOT=$(cd "$(dirname "$script")/.." && pwd)
+    DOTFILES_DIR="$ROOT"
 
+    . lib/cli.sh
     . lib/util.sh
     . lib/branch.sh
     . lib/cli/status.sh
@@ -37,10 +40,10 @@ main() {
         git init --bare ../origin/org/repo.git >/dev/null 2>&1
         git remote add origin "../origin/org/repo.git"
 
-        out=$(zsh -c "cd \"$repo_dir\"; . \"$DOTFILES_DIR/p6common/lib/_bootstrap.sh\"; p6_bootstrap \"$DOTFILES_DIR/p6common\"; . \"$ROOT/lib/util.sh\"; p6_git_util_repo_from_origin")
+        out=$(zsh -c "cd \"$repo_dir\"; . \"$DOTFILES_DIR/p6common/lib/_bootstrap.sh\"; p6_bootstrap \"$DOTFILES_DIR/p6common\"; . \"$ROOT/lib/util.sh\"; . \"$ROOT/lib/cli.sh\"; p6_git_util_repo_from_origin")
         p6_test_assert_eq "$out" "repo" "repo_from_origin"
 
-        out=$(zsh -c "cd \"$repo_dir\"; . \"$DOTFILES_DIR/p6common/lib/_bootstrap.sh\"; p6_bootstrap \"$DOTFILES_DIR/p6common\"; . \"$ROOT/lib/util.sh\"; p6_git_util_org_from_origin")
+        out=$(zsh -c "cd \"$repo_dir\"; . \"$DOTFILES_DIR/p6common/lib/_bootstrap.sh\"; p6_bootstrap \"$DOTFILES_DIR/p6common\"; . \"$ROOT/lib/util.sh\"; . \"$ROOT/lib/cli.sh\"; p6_git_util_org_from_origin")
         p6_test_assert_eq "$out" "org" "org_from_origin"
 
         p6_test_assert_not_blank "$(p6_git_util_sha_short_get)" "sha_short_get"
@@ -92,9 +95,9 @@ main() {
         git commit -m "init" >/dev/null 2>&1
         git branch -m main >/dev/null 2>&1
 
-        path=$(p6_git_util_msg_collect ":" "hello")
-        p6_test_assert_file_exists "$path" "msg_collect creates file"
-        grep -q "hello" "$path" >/dev/null
+        msg_path=$(p6_git_util_msg_collect ":" "hello")
+        p6_test_assert_file_exists "$msg_path" "msg_collect creates file"
+        grep -q "hello" "$msg_path" >/dev/null
         p6_test_assert_eq "$?" "0" "msg_collect keeps msg"
     )
     p6_test_finish
@@ -125,4 +128,4 @@ main() {
     p6_test_teardown
 }
 
-main "$@"
+main "$0" "$@"
