@@ -63,7 +63,7 @@ p6_git_util_sha_short_get() {
 ######################################################################
 p6_git_util_dirty_get() {
 
-    local gstatus="$(p6_git_cli status 2>/dev/null | tail -1)"
+    local gstatus="$(p6_git_cli status 2>/dev/null | p6_filter_row_last 1)"
 
     p6_string_blank "$gstatus"
     local rc=$?
