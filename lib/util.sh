@@ -89,6 +89,25 @@ p6_git_util_inside_tree() {
 ######################################################################
 #<
 #
+# Function: p6_git_util_has_remote(remote)
+#
+#  Args:
+#	remote -
+#
+#>
+######################################################################
+p6_git_util_has_remote() {
+    local remote="$1"
+
+    p6_git_cli remote get-url "$remote" > /dev/null 2>&1
+    local rc=$?
+
+    p6_return_code_as_code "$rc"
+}
+
+######################################################################
+#<
+#
 # Function: p6_git_util_clobber()
 #
 #>
